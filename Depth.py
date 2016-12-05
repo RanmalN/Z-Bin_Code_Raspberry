@@ -7,14 +7,14 @@
 def measure():
   # This function measures a distance
   GPIO.output(TRIGGER_PIN, True)
-  time.sleep(0.0001)
+  time.sleep(0.00001)
   GPIO.output(TRIGGER_PIN, False)
   start = time.time()
 
-  while GPIO.input(ECHO_PIN)==0:
+  while GPIO.input(ECHO_PIN)==1:
     start = time.time()
 
-  while GPIO.input(ECHO_PIN)==1:
+  while GPIO.input(ECHO_PIN)==0:
     stop = time.time()
 
   elapsed = stop-start
