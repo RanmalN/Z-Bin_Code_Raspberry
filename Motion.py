@@ -1,26 +1,16 @@
-# -----------------------
-import time
-import RPi.GPIO as GPIO
-#------------------------
+ print "Ultrasonic Measurement"
  
-GPIO_PIR     = 11
+ try:
+   lid_status=True
 
-print "Ultrasonic Measurement"
-
-try:
-  count=0
-  lid_status=True
-  while True:
-        GPIO.cleanup()
-        # Define GPIO to use on Pi
-        GPIO.setmode(GPIO.BOARD)
-      	# Set pins as output and input
-        GPIO.setup(GPIO_PIR, GPIO.IN)      # Read output from PIR motion sensor
-
-        pir_Input=GPIO.input(11)
-
-        print pir_Input              #When output from motion sensor is HIGH
-
-
-except KeyboardInterrupt:
-  GPIO.cleanup()
+         pir_Input=GPIO.input(11)
+ 
+        if pir_Input==1 and pirStat:
+            print "Life Detected "            
+        else:
+            print "No Any Life Detected"
+ 
+        time.sleep(2)
+ 
+ except KeyboardInterrupt:
+   GPIO.cleanup()
