@@ -11,13 +11,12 @@ def measure():
   GPIO.output(TRIGGER_PIN, False)
   start = time.time()
 
-  while GPIO.input(ECHO_PIN)==1:
+  while GPIO.input(ECHO_PIN)==0:
     start = time.time()
 
-  while GPIO.input(ECHO_PIN)==0:
+  while GPIO.input(ECHO_PIN)==1:
     stop = time.time()
 
-  elapsed = stop-start
 
   distance = (elapsed * 34300)/2
 
