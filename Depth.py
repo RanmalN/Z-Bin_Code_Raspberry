@@ -17,6 +17,7 @@ def measure():
   while GPIO.input(ECHO_PIN)==1:
     stop = time.time()
 
+  elapsed = stop-start
 
   distance = (elapsed * 34300)/2
 
