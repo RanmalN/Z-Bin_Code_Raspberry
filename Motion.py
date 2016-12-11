@@ -30,8 +30,15 @@ def measure_average():
     time.sleep(.25)
     distance3=measure()
     time.sleep(.35)
-    distance=distance1+distance2+distance3
-    distance=distance/3
+    distance4=measure()
+    time.sleep(.25)
+    distance5=measure()
+    time.sleep(.25)
+    distance6=measure()
+    time.sleep(.35)
+    distance=distance1+distance2+distance3+distance4+distance5+distance6
+    print distance
+    distance=distance/6
     return distance
 
 
