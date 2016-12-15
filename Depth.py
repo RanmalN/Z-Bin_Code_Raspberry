@@ -18,11 +18,24 @@ def measure():
     stop = time.time()
 
   elapsed = stop-start
-
+  print elapesd 
   distance = (elapsed * 34300)/2
 
   return distance
-  
+  #This function measure a average.to improve the accuracy
+
+def measure_average(): 
+  count=0
+  distance=0;
+  while (count<3):
+	distance1=measure()
+	time.sleep(.01)
+	distance=distance+distance1
+	count=count+1
+ 
+  distance=distance/3
+  return distance
+
 
 # -----------------------
 # Main Script
