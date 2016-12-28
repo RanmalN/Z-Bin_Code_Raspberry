@@ -29,11 +29,17 @@ def measure_average():
     distance2=measure()
     time.sleep(.25)
     distance3=measure()
-    time.sleep(.35)
+    time.sleep(.25)
     distance=distance1+distance2+distance3
-    print distance
     distance=distance/3
     return distance
+  
+
+# Define the distance for sensing
+maxDistance   = 20
+
+# Define whether the pir sensor is needed.
+pirStat = True
 
 
 GPIO_TRIGGER = 16
@@ -60,12 +66,19 @@ try:
         # Set trigger to False (Low)
         GPIO.output(GPIO_TRIGGER, False)
         pir_Input=GPIO.input(11)
-
-        if pir_Input==1 and pirStat:
+        
+        if pir_Input==1 and pirStat: 
             print "Life Detected ",count              #When output from motion sensor is HIGH
-            distance = measure_average()
+            distance = measure()
+            print distance
+            if distance<maxDistance and distance>0:
+                print "Lid is Opening"
+            else:
+                    print "Lid is Closing"
         else:
-
+            print "No Any Life Detected",count
+            
+        
         time.sleep(2)
         count=count+1
 except KeyboardInterrupt:
