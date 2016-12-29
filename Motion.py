@@ -37,7 +37,7 @@ def measure_average():
 def lid_open():
 # This function open the lid
   count =0
-    while count<100:
+    while count<50:
 			GPIO.output(7,1)
 			time.sleep(0.0005)
 			GPIO.output(7,0)
@@ -48,7 +48,7 @@ def lid_open():
 def lid_close():
 # This function close the lid
   counter =0
-      while counter<25:
+      while counter<50:
                         GPIO.output(7,1)
                         time.sleep(.0015)
                         GPIO.output(7,0)
@@ -75,6 +75,7 @@ print "Ultrasonic Measurement"
 
 try:
   count=0
+  lid_status=True
   while True:
         GPIO.cleanup()
         # Define GPIO to use on Pi
