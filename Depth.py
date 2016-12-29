@@ -18,7 +18,7 @@ def measure():
     stop = time.time()
 
   elapsed = stop-start
-  print elapesd 
+
   distance = (elapsed * 34300)/2
 
   return distance
@@ -27,9 +27,9 @@ def measure():
 def measure_average(): 
   count=0
   distance=0;
-  while (count<3):
+  while (count<100):
 	distance1=measure()
-	time.sleep(.01)
+	time.sleep(.0005)
 	distance=distance+distance1
 	count=count+1
  
@@ -48,8 +48,6 @@ GPIO.setmode(GPIO.BCM)
 #defining the GPIO pin for the trigger and echo
 TRIGGER_PIN = 33
 ECHO_PIN    = 35
-
-print "Ultrasonic Measurement"
 
 GPIO.setup(TRIGGER_PIN,GPIO.OUT)  # Trigger
 GPIO.setup(ECHO_PIN,GPIO.IN)      # Echo
