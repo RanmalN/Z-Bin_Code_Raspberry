@@ -27,7 +27,7 @@ def measure():
 def measure_average(): 
   count=0
   distance=0;
-  while (count<100):
+  while (count<5):
 	distance1=measure()
 	time.sleep(.0005)
 	distance=distance+distance1
