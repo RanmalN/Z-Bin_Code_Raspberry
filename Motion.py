@@ -29,11 +29,32 @@ def measure_average():
     distance2=measure()
     time.sleep(.25)
     distance3=measure()
-    time.sleep(.25)
+    time.sleep(.35)
     distance=distance1+distance2+distance3
     distance=distance/3
     return distance
   
+def lid_open():
+# This function open the lid
+  count =0
+    while count<100:
+			GPIO.output(7,1)
+			time.sleep(0.0005)
+			GPIO.output(7,0)
+			time.sleep(0.0020)
+			count = count + 1
+
+
+def lid_close():
+# This function close the lid
+  counter =0
+      while counter<25:
+                        GPIO.output(7,1)
+                        time.sleep(.0015)
+                        GPIO.output(7,0)
+                        time.sleep(.0020)
+                        counter=counter+1
+			GPIO.cleanup()
 
 # Define the distance for sensing
 maxDistance   = 20
@@ -44,6 +65,7 @@ pirStat = True
 
 GPIO_TRIGGER = 16
 GPIO_ECHO    = 18
+GPIO_MOTOR   = 7
 GPIO_PIR     = 11
 
 print "Ultrasonic Measurement"
@@ -53,7 +75,6 @@ print "Ultrasonic Measurement"
 
 try:
   count=0
-  lid_status=True
   while True:
         GPIO.cleanup()
         # Define GPIO to use on Pi
@@ -61,6 +82,7 @@ try:
       	# Set pins as output and input
         GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  # Trigger
         GPIO.setup(GPIO_ECHO,GPIO.IN)      # Echo
+        GPIO.setup(GPIO_MOTOR,GPIO.OUT)    # Motor
         GPIO.setup(GPIO_PIR, GPIO.IN)      # Read output from PIR motion sensor
 
         # Set trigger to False (Low)
@@ -72,12 +94,13 @@ try:
             distance = measure()
             print distance
             if distance<maxDistance and distance>0:
-                print "Lid is Opening"
+                if lid_status:
+                    lid_open()
             else:
-                    print "Lid is Closing"
+                if lid_status==False:
+                    lid_close()
         else:
             print "No Any Life Detected",count
-            
         
         time.sleep(2)
         count=count+1
