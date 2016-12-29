@@ -36,6 +36,7 @@ def measure_average():
   
 def lid_open():
 # This function open the lid
+  print "Lid is Opening"
   count =0
     while count<50:
 			GPIO.output(7,1)
@@ -47,6 +48,7 @@ def lid_open():
 
 def lid_close():
 # This function close the lid
+  print "Lid is Opening"
   counter =0
       while counter<50:
                         GPIO.output(7,1)
@@ -97,9 +99,18 @@ try:
             if distance<maxDistance and distance>0:
                 if lid_status:
                     lid_open()
+                    print "opening @",count
+                    time.sleep(2)
+                    lid_status=False
+                else:
+                     print "LID is Already Open ",count
             else:
                 if lid_status==False:
                     lid_close()
+                    print "closing @",count
+                    lid_status=True
+                else:
+                     print "Swipe to Open the lid",count
         else:
             print "No Any Life Detected",count
         
