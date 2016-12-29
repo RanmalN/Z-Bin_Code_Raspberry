@@ -6,13 +6,12 @@
 
 def measure():
   # This function measures a distance
-  try:
+
 	GPIO.output(TRIGGER_PIN, True)
 	time.sleep(0.00001)
 	GPIO.output(TRIGGER_PIN, False)
 	start = time.time()
-  except:
-	print "Exception"
+
   
   while GPIO.input(ECHO_PIN)==0:
     start = time.time()
@@ -31,7 +30,7 @@ def measure_average():
  try:
   count=0
   distance=0;
-  while (count<5):
+  while (count<3):
 	distance1=measure()
 	time.sleep(.0005)
 	distance=distance+distance1
