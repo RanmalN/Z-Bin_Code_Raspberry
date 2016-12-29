@@ -19,10 +19,6 @@ def measure():
   while GPIO.input(ECHO_PIN)==1:
     stop = time.time()
 
-  elapsed = stop-start
-
-  distance = (elapsed * 34300)/2
-
   return distance
   #This function measure a average.to improve the accuracy
 
@@ -48,6 +44,9 @@ def measure_average():
 
 # Use BCM GPIO references
 # instead of physical pin numbers
+# instead of physical pin numbers
+# instead of physical pin numbers
+
 GPIO.setmode(GPIO.BCM)
 
 #defining the GPIO pin for the trigger and echo
