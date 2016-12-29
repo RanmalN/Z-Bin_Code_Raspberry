@@ -6,11 +6,14 @@
 
 def measure():
   # This function measures a distance
-  GPIO.output(TRIGGER_PIN, True)
-  time.sleep(0.00001)
-  GPIO.output(TRIGGER_PIN, False)
-  start = time.time()
-
+  try:
+	GPIO.output(TRIGGER_PIN, True)
+	time.sleep(0.00001)
+	GPIO.output(TRIGGER_PIN, False)
+	start = time.time()
+  except:
+	print "Exception"
+  
   while GPIO.input(ECHO_PIN)==0:
     start = time.time()
 
@@ -25,6 +28,7 @@ def measure():
   #This function measure a average.to improve the accuracy
 
 def measure_average(): 
+ try:
   count=0
   distance=0;
   while (count<5):
@@ -32,6 +36,8 @@ def measure_average():
 	time.sleep(.0005)
 	distance=distance+distance1
 	count=count+1
+   except:
+	print "Exception"
  
   distance=distance/3
   return distance
@@ -48,11 +54,12 @@ GPIO.setmode(GPIO.BCM)
 #defining the GPIO pin for the trigger and echo
 TRIGGER_PIN = 33
 ECHO_PIN    = 35
-
-GPIO.setup(TRIGGER_PIN,GPIO.OUT)  # Trigger
-GPIO.setup(ECHO_PIN,GPIO.IN)      # Echo
-GPIO.output(TRIGGER_PIN, False)
-
+  try:
+	GPIO.setup(TRIGGER_PIN,GPIO.OUT)  # Trigger
+	GPIO.setup(ECHO_PIN,GPIO.IN)      # Echo
+	GPIO.output(TRIGGER_PIN, False)
+   except:
+	print "Exception"
 try:
 
   while True:
