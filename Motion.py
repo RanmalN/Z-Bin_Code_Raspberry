@@ -38,18 +38,22 @@ def lid_open():
 # This function open the lid
   print "Lid is Opening"
   count =0
+  try:
     while count<50:
 			GPIO.output(7,1)
 			time.sleep(0.0005)
 			GPIO.output(7,0)
 			time.sleep(0.0020)
 			count = count + 1
+  except:
+      print "Exception on Opening"
 
 
 def lid_close():
 # This function close the lid
   print "Lid is Opening"
   counter =0
+  try:
       while counter<50:
                         GPIO.output(7,1)
                         time.sleep(.0015)
@@ -57,6 +61,8 @@ def lid_close():
                         time.sleep(.0020)
                         counter=counter+1
 			GPIO.cleanup()
+  except:
+      print "Exception on Opening"
 
 # Define the distance for sensing
 maxDistance   = 20
@@ -113,6 +119,10 @@ try:
                      print "Swipe to Open the lid",count
         else:
             print "No Any Life Detected",count
+            if lid_status==False:
+                    #lid_close()
+                    print "closing ",count
+                    lid_status=True
         
         time.sleep(2)
         count=count+1
