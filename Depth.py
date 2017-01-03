@@ -70,7 +70,13 @@ try:
   while True:
 
     distance = measure_average()
-   
+    print "Distance : %.1f" % distance
+    stringDistance = str(distance)
+    try:
+           result = fire.put('level','currentLevel',stringDistance)
+    except:
+           print "connection failed"
+
     time.sleep(1)
 
 except KeyboardInterrupt:
