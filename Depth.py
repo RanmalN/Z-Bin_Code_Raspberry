@@ -50,6 +50,10 @@ def measure_average():
 
 # Use BCM GPIO references
 # instead of physical pin numbers
+# instead of physical pin numbers
+# instead of physical pin numbers
+# instead of physical pin numbers
+# instead of physical pin numbers
 GPIO.setmode(GPIO.BCM)
 
 #defining the GPIO pin for the trigger and echo
@@ -67,17 +71,7 @@ fire = firebase.FirebaseApplication('https://zbin-6eb81.firebaseio.com/')
 
 try:
 
-  while True:
 
-    distance = measure_average()
-    print "Distance : %.1f" % distance
-    stringDistance = str(distance)
-    try:
-           result = fire.put('level','currentLevel',stringDistance)
-    except:
-           print "connection failed"
-
-    time.sleep(1)
 
 except KeyboardInterrupt:
   GPIO.cleanup()
