@@ -1,4 +1,4 @@
-*********************************************************   Z - Bin Raspberry Pi  ******************************************************
+****************************************   Z - Bin Raspberry Pi  **********************************
 
 The purpose of this project is to design, develop and evaluate “smart garbage disposal system" and mobile app which basically works according to the motion detection technology.This product will target the indoor garbage users to have a proper and effective disposalsystem. The Z bin primarily consist of three main sensors. They are,
 
